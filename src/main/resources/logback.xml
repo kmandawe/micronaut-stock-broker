@@ -9,6 +9,8 @@
         </encoder>
     </appender>
 
+    <logger name="com.kensbunker.micronaut" level="DEBUG"/>
+
     <root level="info">
         <appender-ref ref="STDOUT" />
     </root>
