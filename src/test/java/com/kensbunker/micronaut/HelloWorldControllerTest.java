@@ -29,7 +29,7 @@ public class HelloWorldControllerTest {
     @Test
     void testHelloResponse() {
         final String result = client.toBlocking().retrieve("/hello");
-        assertEquals("Hello from service", result);
+        assertEquals("Hello from service!", result);
     }
 
 }
