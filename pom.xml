@@ -18,6 +18,7 @@
     <!-- <release.version>8</release.version> -->
     <micronaut.version>2.1.3</micronaut.version>
     <exec.mainClass>com.kensbunker.micronaut.Application</exec.mainClass>
+    <lombok.version>1.18.12</lombok.version>
   </properties>
 
   <repositories>
@@ -40,6 +41,12 @@
 
 
   <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
       <groupId>io.micronaut</groupId>
       <artifactId>micronaut-inject</artifactId>
@@ -109,6 +116,11 @@
           <!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
           <annotationProcessorPaths>
             <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>${lombok.version}</version>
+            </path>
+            <path>
               <groupId>io.micronaut</groupId>
               <artifactId>micronaut-inject-java</artifactId>
               <version>${micronaut.version}</version>
@@ -132,6 +144,11 @@
             </goals>
             <configuration>
               <annotationProcessorPaths>
+                <path>
+                  <groupId>org.projectlombok</groupId>
+                  <artifactId>lombok</artifactId>
+                  <version>${lombok.version}</version>
+                </path>
                 <path>
                   <groupId>io.micronaut</groupId>
                   <artifactId>micronaut-inject-java</artifactId>
