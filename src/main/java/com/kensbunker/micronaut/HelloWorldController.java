@@ -6,9 +6,15 @@ import io.micronaut.http.annotation.Get;
 @Controller("/hello")
 public class HelloWorldController {
 
+  private final HelloWorldService service;
+
+  public HelloWorldController(final HelloWorldService service) {
+    this.service = service;
+  }
+
   @Get("/")
   public String index() {
-    return "Hello World";
+    return service.sayHi();
   }
 
 }
