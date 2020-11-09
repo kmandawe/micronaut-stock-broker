@@ -32,4 +32,16 @@ public class HelloWorldControllerTest {
         assertEquals("Hello from service!", result);
     }
 
+    @Test
+    void returnGermanGreeting() {
+        final String result = client.toBlocking().retrieve("/hello/de");
+        assertEquals("Hallo", result);
+    }
+
+    @Test
+    void returnEnglishGreeting() {
+        final String result = client.toBlocking().retrieve("/hello/en");
+        assertEquals("Hello", result);
+    }
+
 }

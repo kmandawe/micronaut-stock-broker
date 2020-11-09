@@ -7,14 +7,26 @@ import io.micronaut.http.annotation.Get;
 public class HelloWorldController {
 
   private final HelloWorldService service;
+  private final GreetingConfig config;
 
-  public HelloWorldController(final HelloWorldService service) {
+  public HelloWorldController(final HelloWorldService service, final GreetingConfig config) {
     this.service = service;
+    this.config = config;
   }
 
   @Get("/")
   public String index() {
     return service.sayHi();
+  }
+
+  @Get("/de")
+  public String greetInGerman() {
+    return config.getDe();
+  }
+
+  @Get("/en")
+  public String greetInEnglish() {
+    return config.getEn();
   }
 
 }
