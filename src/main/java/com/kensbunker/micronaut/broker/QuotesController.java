@@ -5,8 +5,13 @@ import com.kensbunker.micronaut.broker.model.Quote;
 import com.kensbunker.micronaut.broker.store.InMemoryStore;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
+import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.Optional;
 
 @Controller("/quotes")
@@ -18,6 +23,12 @@ public class QuotesController {
     this.store = store;
   }
 
+  @Operation(summary = "Returns a quote for the given symbol.")
+  @ApiResponse(
+      content = @Content(mediaType = MediaType.APPLICATION_JSON)
+  )
+  @ApiResponse(responseCode = "400", description = "Invalid symbol specified")
+  @Tag(name = "quotes")
   @Get("/{symbol}")
   public HttpResponse getQuote(String symbol) {
     Optional<Quote> maybeQuote = store.fetchQuote(symbol);

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.kensbunker.micronaut</groupId>
   <artifactId>mn-stock-broker</artifactId>
@@ -40,7 +41,6 @@
   </dependencyManagement>
 
 
-
   <dependencies>
     <dependency>
       <groupId>org.projectlombok</groupId>
@@ -71,6 +71,11 @@
     <dependency>
       <groupId>io.micronaut</groupId>
       <artifactId>micronaut-runtime</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.swagger.core.v3</groupId>
+      <artifactId>swagger-annotations</artifactId>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -136,8 +141,17 @@
               <artifactId>micronaut-validation</artifactId>
               <version>${micronaut.version}</version>
             </path>
+            <path>
+              <groupId>io.micronaut.openapi</groupId>
+              <artifactId>micronaut-openapi</artifactId>
+              <version>2.1.1</version>
+            </path>
           </annotationProcessorPaths>
+          <fork>true</fork>
           <compilerArgs>
+            <arg>
+              -J-Dmicronaut.openapi.views.spec=redoc.enabled=true,rapidoc.enabled=true,swagger-ui.enabled=true,swagger-ui.theme=flattop
+            </arg>
             <arg>-Amicronaut.processing.group=com.kensbunker.micronaut</arg>
             <arg>-Amicronaut.processing.module=mn-stock-broker</arg>
           </compilerArgs>
@@ -172,6 +186,4 @@
       </plugin>
     </plugins>
   </build>
-
-
 </project>
