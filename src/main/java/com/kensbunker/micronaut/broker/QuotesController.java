@@ -3,6 +3,7 @@ package com.kensbunker.micronaut.broker;
 import com.kensbunker.micronaut.broker.error.CustomError;
 import com.kensbunker.micronaut.broker.model.Quote;
 import com.kensbunker.micronaut.broker.persistence.jpa.QuotesRepository;
+import com.kensbunker.micronaut.broker.persistence.model.QuoteDTO;
 import com.kensbunker.micronaut.broker.persistence.model.QuoteEntity;
 import com.kensbunker.micronaut.broker.persistence.model.SymbolEntity;
 import com.kensbunker.micronaut.broker.store.InMemoryStore;
@@ -79,12 +80,12 @@ public class QuotesController {
   }
 
   @Get("/jpa/ordered/desc")
-  public List<QuoteEntity> orderedDesc() {
+  public List<QuoteDTO> orderedDesc() {
     return quotes.listOrderByVolumeDesc();
   }
 
   @Get("/jpa/ordered/asc")
-  public List<QuoteEntity> orderedAsc() {
+  public List<QuoteDTO> orderedAsc() {
     return quotes.listOrderByVolumeAsc();
   }
 
