@@ -5,6 +5,8 @@ import com.kensbunker.micronaut.broker.persistence.model.QuoteDTO;
 import com.kensbunker.micronaut.broker.persistence.model.QuoteEntity;
 import com.kensbunker.micronaut.broker.persistence.model.SymbolEntity;
 import io.micronaut.data.annotation.Repository;
+import io.micronaut.data.model.Pageable;
+import io.micronaut.data.model.Slice;
 import io.micronaut.data.repository.CrudRepository;
 import java.math.BigDecimal;
 import java.util.List;
@@ -23,6 +25,12 @@ public interface QuotesRepository extends CrudRepository<QuoteEntity, Integer> {
 
   List<QuoteDTO> listOrderByVolumeAsc();
 
-  // Filter
+  // Filter & Ordering
   List<QuoteDTO> findByVolumeGreaterThanOrderByVolumeAsc(BigDecimal volume);
+
+  // Pagination
+  List<QuoteDTO> findByVolumeGreaterThan(BigDecimal volume, Pageable pageable);
+
+  Slice<QuoteDTO> list(Pageable pageable);
+
 }
